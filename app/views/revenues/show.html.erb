@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @revenue.description %>
+</p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @revenue.company.name %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @revenue.amount %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @revenue.date %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @revenue.type %>
+</p>
+
+<%= link_to 'New', new_revenue_path %> |
+<%= link_to 'Edit', edit_revenue_path(@revenue) %> |
+<%= link_to 'Back', revenues_path %>

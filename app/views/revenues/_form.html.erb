@@ -1,0 +1,61 @@
+<%= form_for(@revenue) do |f| %>
+  <% if @revenue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@revenue.errors.count, "error") %> prohibited this revenue from being saved:</h2>
+
+      <ul>
+      <% @revenue.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_area :description %>
+  </div>
+
+  <%= f.collection_select :company_id, Company.order('name ASC').all, :id, :name, :prompt => "Select Company" %>
+
+<%# if false %>
+<%= f.fields_for :company do |builder| %>
+  <fieldset>
+  <%= builder.label :name, "Company Name" %><br/>
+  <%= builder.text_area :name %>
+  </fieldset>
+  <fieldset>
+  <%= builder.label :main_contact %><br/>
+  <%= builder.text_area :main_contact %>
+  </fieldset>
+    <fieldset>
+  <%= builder.label :email %><br/>
+  <%= builder.text_area :email %>
+  </fieldset>
+    <fieldset>
+  <%= builder.label :country %><br/>
+  <%= builder.country_select :country, ['Select Country'] %>
+  </fieldset>
+<% end %>
+<%# end %>
+
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label 'Fees' %><br>
+    <%= f.text_field :fee %>
+  </div>
+  <div class="field">
+    <%= f.label :date %><br>
+    <%= f.text_field :date %>
+  </div>
+  <div class="field">
+    <%= f.label :type %><br>
+    <%= f.select(:type, ['Sale', 'Service', 'Custom'], :prompt => "Select Type" ) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

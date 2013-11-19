@@ -1,0 +1,14 @@
+Accounting App
+
+This is just a simple app I built to keep track of my revenue and expenses.
+
+11/19/2013
+
+Added companies, revenues, and expenses.
+
+To do:
+
+join expenses with companies.
+represent data from revenues and expenses on index.
+add asset, liability and equity tables
+bring everything together in a debit and credit table.

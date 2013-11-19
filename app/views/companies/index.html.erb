@@ -1,0 +1,45 @@
+<h1>Listing companies</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Main contact</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Website</th>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Country</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.name %></td>
+        <td><%= company.main_contact %></td>
+        <td><%= company.phone %></td>
+        <td><%= company.email %></td>
+        <td><%= company.website %></td>
+        <td><%= company.address %></td>
+        <td><%= company.city %></td>
+        <td><%= company.state %></td>
+        <td><%= company.zip %></td>
+        <td><%= company.country %></td>
+        <td><%= link_to 'Show', company %></td>
+        <td><%= link_to 'Edit', edit_company_path(company) %></td>
+        <td><%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Company', new_company_path %>
