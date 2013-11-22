@@ -15,7 +15,6 @@ class RevenuesController < ApplicationController
   # GET /revenues/new
   def new
     @revenue = Revenue.new
-    #@company = @revenue.build_company
   end
 
   # GET /revenues/1/edit

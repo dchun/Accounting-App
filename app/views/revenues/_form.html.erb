@@ -18,27 +18,6 @@
 
   <%= f.collection_select :company_id, Company.order('name ASC').all, :id, :name, :prompt => "Select Company" %>
 
-<%# if false %>
-<%= f.fields_for :company do |builder| %>
-  <fieldset>
-  <%= builder.label :name, "Company Name" %><br/>
-  <%= builder.text_area :name %>
-  </fieldset>
-  <fieldset>
-  <%= builder.label :main_contact %><br/>
-  <%= builder.text_area :main_contact %>
-  </fieldset>
-    <fieldset>
-  <%= builder.label :email %><br/>
-  <%= builder.text_area :email %>
-  </fieldset>
-    <fieldset>
-  <%= builder.label :country %><br/>
-  <%= builder.country_select :country, ['Select Country'] %>
-  </fieldset>
-<% end %>
-<%# end %>
-
   <div class="field">
     <%= f.label :amount %><br>
     <%= f.text_field :amount %>

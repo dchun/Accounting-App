@@ -1,3 +1,4 @@
+<div id="container" style="width:500px">
 <%= form_for(@company) do |f| %>
   <% if @company.errors.any? %>
     <div id="error_explanation">
@@ -11,6 +12,7 @@
     </div>
   <% end %>
 
+<div style="width:250px;float:left;">
   <div class="field">
     <%= f.label :name %><br>
     <%= f.text_field :name %>
@@ -51,7 +53,36 @@
     <%= f.label :country %><br>
     <%= f.country_select :country, ['Select Country'] %>
   </div>
+</div>
+<div style="width:250px;float:left;">
+<%= f.fields_for :revenue do |builder| %>
+  <fieldset>
+  <%= builder.label :description, "Revenue Description" %><br/>
+  <%= builder.text_area :description %>
+  </fieldset>
+  <fieldset>
+  <%= builder.label :amount %><br/>
+  <%= builder.text_area :amount %>
+  </fieldset>
+    <fieldset>
+  <%= builder.label :fee %><br/>
+  <%= builder.text_area :fee %>
+  </fieldset>
+      <fieldset>
+  <%= builder.label :date %><br/>
+  <%= builder.text_area :date %>
+  </fieldset>
+    <fieldset>
+  <%= builder.label :type %><br/>
+  <%= builder.select(:type, ['Sale', 'Service', 'Custom'], :prompt => "Select Type" ) %>
+  </fieldset>
+<% end %>
+</div>
+
+<div style="clear:both;">
   <div class="actions">
     <%= f.submit %>
   </div>
+</div>
 <% end %>
+</div>
