@@ -1,88 +1,86 @@
 <div id="container" style="width:500px">
-<%= form_for(@company) do |f| %>
+  <%= form_for(@company) do |f| %>
   <% if @company.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+  <div id="error_explanation">
+    <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
 
-      <ul>
+    <ul>
       <% @company.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
+      <li><%= msg %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
-<div style="width:250px;float:left;">
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div style="width:250px;float:left;">
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :main_contact %><br>
+      <%= f.text_field :main_contact %>
+    </div>
+    <div class="field">
+      <%= f.label :phone %><br>
+      <%= f.text_field :phone %>
+    </div>
+    <div class="field">
+      <%= f.label :email %><br>
+      <%= f.text_field :email %>
+    </div>
+    <div class="field">
+      <%= f.label :website %><br>
+      <%= f.text_field :website %>
+    </div>
+    <div class="field">
+      <%= f.label :address %><br>
+      <%= f.text_field :address %>
+    </div>
+    <div class="field">
+      <%= f.label :city %><br>
+      <%= f.text_field :city %>
+    </div>
+    <div class="field">
+      <%= f.label :state %><br>
+      <%= f.text_field :state %>
+    </div>
+    <div class="field">
+      <%= f.label :zip %><br>
+      <%= f.text_field :zip %>
+    </div>
+    <div class="field">
+      <%= f.label :country %><br>
+      <%= f.country_select :country, ['Select Country'] %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :main_contact %><br>
-    <%= f.text_field :main_contact %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :website %><br>
-    <%= f.text_field :website %>
-  </div>
-  <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
-  </div>
-  <div class="field">
-    <%= f.label :city %><br>
-    <%= f.text_field :city %>
-  </div>
-  <div class="field">
-    <%= f.label :state %><br>
-    <%= f.text_field :state %>
-  </div>
-  <div class="field">
-    <%= f.label :zip %><br>
-    <%= f.text_field :zip %>
-  </div>
-  <div class="field">
-    <%= f.label :country %><br>
-    <%= f.country_select :country, ['Select Country'] %>
-  </div>
-</div>
-<div style="width:250px;float:left;">
-<%= f.fields_for :revenues do |builder| %>
-  <fieldset>
-  <%= builder.label :description, "Revenue Description" %><br/>
-  <%= builder.text_area :description %>
-  </fieldset>
-  <fieldset>
-  <%= builder.label :amount %><br/>
-  <%= builder.text_area :amount %>
-  </fieldset>
-    <fieldset>
-  <%= builder.label :fee %><br/>
-  <%= builder.text_area :fee %>
-  </fieldset>
-      <fieldset>
-  <%= builder.label :date %><br/>
-  <%= builder.text_area :date %>
-  </fieldset>
-    <fieldset>
-  <%= builder.label :type %><br/>
-  <%= builder.select(:type, ['Sale', 'Service', 'Custom'], :prompt => "Select Type" ) %>
-  </fieldset>
-<% end %>
-</div>
+  <div style="width:250px;float:left;">
 
-<div style="clear:both;">
-  <div class="actions">
-    <%= f.submit %>
+
+    <div class="form-group">
+      <%= f.fields_for :revenues do |builder| %>
+      <%= render 'revenues', f: builder %>
+      <% end %>
+    </div>
+    <div class="actions">
+      <%= link_to_add_fields "Add Revenue", f, :revenues %>
+    </div>
+
+    <div class="form-group">
+      <%= f.fields_for :expenses do |builder| %>
+      <%= render 'expenses', f: builder %>
+      <% end %>
+    </div>
+    <div class="actions">
+      <%= link_to_add_fields "Add Expense", f, :expenses %>
+    </div>
+
   </div>
-</div>
-<% end %>
+
+  <div style="clear:both;">
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  </div>
+  <% end %>
 </div>

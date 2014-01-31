@@ -69,6 +69,6 @@ class RevenuesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def revenue_params
-      params.require(:revenue).permit(:description, :amount, :date, :type, :fee, :company_id, company_attributes: [:id, :main_contact, :phone, :email, :website, :address, :city, :state, :zip, :country])
+      params.require(:revenue).permit(:description, :amount, :date, :type, :fee, :company_id)
     end
   end

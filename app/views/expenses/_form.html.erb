@@ -1,33 +1,36 @@
 <%= form_for(@expense) do |f| %>
-  <% if @expense.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
+<% if @expense.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@expense.errors.count, "error") %> prohibited this expense from being saved:</h2>
 
-      <ul>
-      <% @expense.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <ul>
+    <% @expense.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
 
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.text_field :amount %>
-  </div>
-  <div class="field">
-    <%= f.label :date %><br>
-    <%= f.date_select :date %>
-  </div>
-  <div class="field">
-    <%= f.label :type %><br>
-    <%= f.text_field :type %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<div class="field">
+  <%= f.label :description %><br>
+  <%= f.text_area :description %>
+</div>
+
+<%= f.collection_select :company_id, Company.order('name ASC').all, :id, :name, :prompt => "Select Company" %>
+
+<div class="field">
+  <%= f.label :amount %><br>
+  <%= f.text_field :amount %>
+</div>
+<div class="field">
+  <%= f.label :date %><br>
+  <%= f.text_field :date, class: "date" %>
+</div>
+<div class="field">
+  <%= f.label :type %><br>
+  <%= f.select(:type, ['Software', 'Infrastructure', 'Custom'], :prompt => "Select Type" ) %>
+</div>
+<div class="actions">
+  <%= f.submit %>
+</div>
 <% end %>

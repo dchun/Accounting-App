@@ -1,0 +1,9 @@
+<fieldset>
+  <%= f.text_area :description, placeholder: "Revenue Description" %>
+  <%= f.text_field :amount, placeholder: "Revenue Amount" %>
+  <%= f.text_field :fee, placeholder: "Revenue Fee" %>
+  <%= f.text_field :date, placeholder: "Revenue Date", class: "date" %>
+  <%= f.select(:type, ['Sale', 'Service', 'Custom'], :prompt => "Select Type" ) %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to '[remove]', '#', class: 'remove_fields' %>
+</fieldset>
