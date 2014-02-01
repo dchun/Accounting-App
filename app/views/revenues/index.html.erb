@@ -17,7 +17,7 @@
   <tbody>
     <% @revenues.each do |revenue| %>
     <tr>
-      <td><%= link_to revenue.date.strftime("%B %d, %Y"), revenue %></td>
+      <td><%= link_to revenue.date, revenue %></td>
       <td><%= link_to revenue.company.name, revenue.company %></td>
       <td><%= truncate revenue.description, length: 40 %></td>
       <td><%= revenue.amount %></td>
@@ -40,6 +40,7 @@
    </tr>
  </thead>
  <tbody>
+  <tr>
   <td>$<%= amount_total = @revenues.inject(0) {|sum, hash| sum + hash[:amount]} %></td>
   <td>&nbsp;-&nbsp;$<%= fee_total = @revenues.inject(0) {|sum, hash| sum + hash[:fee]} %></td>
   <td>&nbsp;=&nbsp;$<%= amount_total - fee_total %></td>
